@@ -61,11 +61,8 @@ export default <T = any>(
     },
   );
   useEffect((): void => {
-    if (isNaN(top)) {
-      return;
-    }
     const end = rowIndex.end > overscan ? rowIndex.end - overscan : overscan;
-    const start = rowIndex.start < overscan ? 0 : rowIndex.start + overscan;
+    const start = rowIndex.start + overscan;
     if (
       top > rowUpdateOffset.downOffset + rowTopOffsetList[end] - height ||
       top < rowTopOffsetList[start] - rowUpdateOffset.upOffset
@@ -74,11 +71,8 @@ export default <T = any>(
     }
   }, [top]);
   useEffect(() => {
-    if (isNaN(left)) {
-      return;
-    }
     const end = colIndex.end > overscan ? colIndex.end - overscan : overscan;
-    const start = colIndex.start < overscan ? 0 : colIndex.start + overscan;
+    const start = colIndex.start + overscan;
     if (
       left > colUpdateOffset.downOffset + colLeftOffsetList[end] - width ||
       left < colLeftOffsetList[start] - colUpdateOffset.upOffset
