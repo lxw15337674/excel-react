@@ -1,11 +1,11 @@
 import Context, { Reducer } from "@/store";
-import * as React from "react";
 import "./../assets/scss/App.scss";
 import Editor from "./Editor";
 import Header from "./Header";
 import SheetBar from "./SheetBar";
+import React from "react";
 
-const App = () => {
+export default () => {
   const [state, dispatch] = Reducer();
   return (
     <Context.Provider value={{ state, dispatch }}>
@@ -17,5 +17,3 @@ const App = () => {
     </Context.Provider>
   );
 };
-
-export default App;

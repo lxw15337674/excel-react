@@ -16,7 +16,6 @@ export default <T = any>(
   const { width, height } = useSize(
     containerRef as MutableRefObject<HTMLElement>,
   );
-
   const { left, top } = useScroll(containerRef);
   const { rowHeight, colWidth } = options;
   const [rowIndex, setRowIndex] = useState({ start: 0, end: 0 });
@@ -31,7 +30,12 @@ export default <T = any>(
   });
   const { run: calculateRowRange } = useDebounceFn(
     () => {
-      const index = findVisibleIndex(top, height, rowTopOffsetList, overscan);
+      const index = findVisibleIndex(
+        top,
+        height || 0,
+        rowTopOffsetList,
+        overscan,
+      );
       setRowIndex(index);
       setRowUpdateOffset(getUpdateDistance(index, rowHeightList));
     },
@@ -42,7 +46,12 @@ export default <T = any>(
   );
   const { run: calculateColRange } = useDebounceFn(
     () => {
-      const index = findVisibleIndex(left, width, colLeftOffsetList, overscan);
+      const index = findVisibleIndex(
+        left,
+        width || 0,
+        colLeftOffsetList,
+        overscan,
+      );
       setColIndex(index);
       setColUpdateOffset(getUpdateDistance(index, colWidthList));
     },
