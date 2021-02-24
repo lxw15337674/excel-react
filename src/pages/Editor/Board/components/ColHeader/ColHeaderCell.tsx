@@ -1,17 +1,34 @@
-import React, { useMemo, useState } from "react";
-import styled from "styled-components";
-import { HeaderCell as Props } from "excelts/dist/interface";
+import React, { useEffect, useMemo, useState } from "react";
+import { HeaderCell as Header } from "excelts/dist/interface";
 import { BaseCell } from "../../styled";
+import { ResizableContent } from "./styled";
 
-const StyledCell = styled(BaseCell)`
-  display: inline-block;
-`;
-
-const HeaderCell = ({ id, index, value, top, left, ...style }: Props) => {
+interface Props extends Header {
+  resizeClick: (e, index) => void;
+}
+const HeaderCell = ({
+  id,
+  index,
+  value,
+  top,
+  left,
+  resizeClick,
+  ...style
+}: Props) => {
+  const onMouseDown = (e) => {
+    resizeClick(e, index);
+  };
   return (
-    <StyledCell style={style} data-index={index}>
-      {value}
-    </StyledCell>
+    <div className="inline-block relative">
+      <BaseCell
+        className="inline-block relative"
+        style={style}
+        data-index={index}
+      >
+        {value}
+      </BaseCell>
+      <ResizableContent onMouseDown={onMouseDown}></ResizableContent>
+    </div>
   );
 };
 export default HeaderCell;
