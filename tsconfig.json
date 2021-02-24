@@ -17,10 +17,12 @@
     "types": [
       "vite/client"
     ],
+    "sourceMap": true,
+    "noImplicitAny": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
@@ -35,6 +37,7 @@
     "jsx": "react"
   },
   "include": [
-    "./src"
+    "./src",
+    "src/common/styled/.tsx"
   ]
 }
