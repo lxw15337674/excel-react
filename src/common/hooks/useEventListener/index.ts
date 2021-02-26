@@ -1,5 +1,5 @@
 // https://ahooks.js.org/zh-CN/hooks/dom/use-event-listener
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { BasicTarget, getTargetElement } from "../utils/dom";
 
 export type Target = BasicTarget<HTMLElement | Element | Window | Document>;

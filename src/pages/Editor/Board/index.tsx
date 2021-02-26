@@ -4,19 +4,14 @@ import DataCellsBoard from "./components/DataCellsBoard";
 import ColHeader from "./components/ColHeader";
 import RowHeader from "./components/RowHeader";
 import useEventListener from "@/common/hooks/useEventListener";
+import useSyncScroll from "@/common/hooks/useSyncScroll";
 
 const Board = () => {
   const colRef = useRef<HTMLElement>();
   const rowRef = useRef<HTMLElement>();
   const boardRef = useRef<HTMLElement>();
-  useEventListener(
-    "scroll",
-    (e) => {
-      colRef.current.scrollLeft = e.target.scrollLeft;
-      rowRef.current.scrollTop = e.target.scrollTop;
-    },
-    { target: boardRef },
-  );
+  useSyncScroll([colRef, boardRef], "left");
+  useSyncScroll([rowRef, boardRef], "top");
   return (
     <StyledBoard>
       <ColHeader colHeaderRef={colRef} />
