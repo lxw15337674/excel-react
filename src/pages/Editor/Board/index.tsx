@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { StyledBoard } from "./styled";
 import DataCellsBoard from "./components/DataCellsBoard";
 import ColHeader from "./components/ColHeader";
 import RowHeader from "./components/RowHeader";
-import useEventListener from "@/common/hooks/useEventListener";
 import useSyncScroll from "@/common/hooks/useSyncScroll";
 
 const Board = () => {

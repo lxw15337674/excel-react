@@ -6,7 +6,7 @@ import PlaceHolderCell from "./PlaceHolderCell";
 import { once } from "@/common/utils/dom";
 
 interface Props {
-  colHeaderRef: React.Ref<HTMLElement>;
+  colHeaderRef: React.Ref<HTMLDivElement>;
 }
 const ColHeader = ({ colHeaderRef }: Props) => {
   const {
@@ -15,12 +15,14 @@ const ColHeader = ({ colHeaderRef }: Props) => {
   } = useContext(Context);
   const sheet = useMemo(() => table.getSheetByIndex(activeSheetIndex), [table]);
   const cells = useMemo(() => sheet.getColCells(), [sheet]);
-
   const [isResizing, setIsResizing] = useState<boolean>(false);
   const [resizeIndex, setResizeIndex] = useState<number>(-1);
-  const axisRef = useRef<HTMLElement>();
+  // console.log(sheet.getColLeft(resizeIndex));
+  console.log(sheet.test());
+  const axisRef = useRef<HTMLDivElement>();
   function handleOnMouseMove(evt) {
-    const left = sheet.getColLeft(resizeIndex);
+    // const left = sheet.getColLeft(resizeIndex);
+    const left = 0;
     if (evt.pageX < left) {
       return;
     }

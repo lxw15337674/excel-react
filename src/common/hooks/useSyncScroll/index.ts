@@ -24,7 +24,6 @@ function useSyncScroll(
         const top = e.target.scrollTop;
         for (let ref of syncList) {
           if (ref.current) {
-            console.log(top);
             ref.current.scrollTop = top;
           }
         }
